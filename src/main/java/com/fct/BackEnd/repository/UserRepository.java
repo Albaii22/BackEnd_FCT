@@ -8,4 +8,6 @@ import com.fct.BackEnd.entities.User;
 @Repository
 public interface UserRepository extends MongoRepository<User, Long>{
 
+    Object findByUsername(String username);
+
 }
