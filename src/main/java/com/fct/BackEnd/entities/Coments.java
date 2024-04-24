@@ -17,10 +17,10 @@ import lombok.NoArgsConstructor;
 @Document(collection = "coments")
 public class Coments {
     @Id
-    private String _id;
+    private Long _id;
 
-    private String user_id; 
-    private String post_id; 
+    private Long user_id; 
+    private Long post_id; 
     private String content;
     private Date timestamp;
 }

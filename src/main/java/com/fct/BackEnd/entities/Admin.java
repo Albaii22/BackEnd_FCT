@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 @Document(collection = "admin")
 public class Admin {
     @Id
-    private String _id;
+    private Long _id;
 
     private String username;
     private int privilege_level;

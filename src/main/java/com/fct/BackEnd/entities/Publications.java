@@ -17,9 +17,9 @@ import lombok.NoArgsConstructor;
 @Document(collection = "publications")
 public class Publications {
     @Id
-    private String _id;
+    private Long _id;
 
-    private String user_id;
+    private Long user_id;
     private String content;
     private Date timestamp;
     private int vote_count;

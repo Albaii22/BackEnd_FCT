@@ -21,7 +21,7 @@ import lombok.*;
 @Document(collection = "usuarios")
 public class User implements UserDetails{
     @Id
-    private String _id;
+    private Long _id;
 
     private String username;
     private String email;
