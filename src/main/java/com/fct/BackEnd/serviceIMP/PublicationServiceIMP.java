@@ -1,16 +1,17 @@
-package com.fct.BackEnd.services;
+package com.fct.BackEnd.serviceIMP;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.fct.BackEnd.entities.Publications;
 import com.fct.BackEnd.repository.PublicationsRepository;
+import com.fct.BackEnd.services.PublicationsService;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class PublicationService {
+public class PublicationServiceIMP implements PublicationsService {
 
     @Autowired
     private PublicationsRepository publicationRepository;
