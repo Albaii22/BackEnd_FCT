@@ -1,4 +1,4 @@
-package com.fct.BackEnd.services;
+package com.fct.BackEnd.jwt;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

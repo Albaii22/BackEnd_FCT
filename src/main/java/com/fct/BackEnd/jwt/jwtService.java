@@ -1,4 +1,4 @@
-package com.fct.BackEnd.services;
+package com.fct.BackEnd.jwt;
 
 import java.security.Key;
 import java.util.Date;
