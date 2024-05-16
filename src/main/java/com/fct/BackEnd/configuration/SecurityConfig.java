@@ -32,15 +32,15 @@ public class SecurityConfig {
                 .disable())
             .authorizeHttpRequests(authRequest ->
                 authRequest
-                    .requestMatchers("/auth/**").permitAll() // Permitir acceso a endpoints en /auth/**
-                    .requestMatchers("/api/v1/protect").permitAll() // Permitir acceso a /api/v1/protect sin autenticación
+                    .requestMatchers("/auth/**").permitAll() 
+                    .requestMatchers("/api/v1/protect").permitAll() 
                     .anyRequest().authenticated()  
                     )
                 .sessionManagement(sessionManager ->
                     sessionManager
-                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) //no usar la politica de inciio de sesion 
+                        .sessionCreationPolicy(SessionCreationPolicy.STATELESS)) 
                 .authenticationProvider(authProvider)
-                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) //agregamos el filtro que configuramos
+                .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class) 
                 .build();
     }
 
