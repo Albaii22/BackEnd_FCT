@@ -21,8 +21,6 @@ public class Response<T> {
         this.result = result;
     }
 
-
-
     public Response(String message, Boolean result) {
         this.message = message;
         this.result = result;
