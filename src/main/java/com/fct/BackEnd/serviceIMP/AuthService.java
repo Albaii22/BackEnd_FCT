@@ -1,4 +1,4 @@
-package com.fct.BackEnd.jwt;
+package com.fct.BackEnd.serviceIMP;
 
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -7,10 +7,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
-import com.fct.BackEnd.entities.Role;
-import com.fct.BackEnd.entities.User;
+import com.fct.BackEnd.entities.*;
 import com.fct.BackEnd.repository.UserRepository;
-import com.fct.BackEnd.requests.*;
+import com.fct.BackEnd.requests.AuthResponse;
+import com.fct.BackEnd.requests.LoginRequest;
+import com.fct.BackEnd.requests.RegisterRequest;
+import com.fct.BackEnd.jwt.*;
 
 import lombok.RequiredArgsConstructor;
 
@@ -21,14 +23,14 @@ public class AuthService {
     private final UserRepository userRepository;
     private final jwtService jwtService;
     private final PasswordEncoder passwordEncoder;
-    private final AuthenticationManager authenticationManager; //autenticar al usuario
+    private final AuthenticationManager authenticationManager; 
 
     @CrossOrigin
     public AuthResponse login(LoginRequest request) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));//Recibe credenciales
-        UserDetails user = (UserDetails) userRepository.findByUsername(request.getUsername()).orElseThrow(); //generamos token
+        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(request.getUsername(), request.getPassword()));
+        UserDetails user = userRepository.findByUsername(request.getUsername()).orElseThrow();
         String token = jwtService.getToken((User) user);
-        return AuthResponse.builder() //Generamos la respuesta con el token ya generado
+        return AuthResponse.builder()
             .token(token)
             .build();
     }
@@ -39,13 +41,12 @@ public class AuthService {
             .username(request.getUsername())
             .password(passwordEncoder.encode(request.getPassword()))
             .email(request.getEmail())
-            .registration_date(request.getRegistration_date())
             .role(Role.USER)
             .build();
 
-        userRepository.save(user); //Se guarda el objeto en la base de datos 
+        userRepository.save(user);  
 
-        return AuthResponse.builder() //Se obtiene el token a traves del lservidode de jwt que se retorna al controlador y luego al cleinte
+        return AuthResponse.builder()
             .token(jwtService.getToken(user))
             .build();
     }
