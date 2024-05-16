@@ -51,7 +51,7 @@ public class AdminServiceIMP implements AdminService {
     @Override
     public Admin updateAdmin(Long id, Admin admin) {
         logger.info("Updating admin with id {}", id);
-        admin.set_id(id);
+        admin.setId(id);
         Admin updatedAdmin = adminRepository.save(admin);
         logger.debug("Updated admin: {}", updatedAdmin);
         return updatedAdmin;

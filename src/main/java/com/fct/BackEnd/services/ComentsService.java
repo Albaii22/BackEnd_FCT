@@ -1,14 +1,14 @@
 package com.fct.BackEnd.services;
 
-import com.fct.BackEnd.entities.Coments;
+import com.fct.BackEnd.entities.Comments;
 
 import java.util.List;
 import java.util.Optional;
 
 public interface ComentsService {
-    List<Coments> getAllComentarios();
-    Optional<Coments> getComentarioById(Long id);
-    Coments createComentario(Coments coments);
-    Coments updateComentario(Long id, Coments coments);
+    List<Comments> getAllComentarios();
+    Optional<Comments> getComentarioById(Long id);
+    Comments createComentario(Comments coments);
+    Comments updateComentario(Long id, Comments coments);
     void deleteComentario(Long id);
 }

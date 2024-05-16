@@ -29,7 +29,7 @@ public class UserServiceIMP implements UserService {
     }
 
     public User updateUsuario(Long id, User user) {
-        user.set_id(id);
+        user.setId(id);
         return userRepository.save(user);
     }
 

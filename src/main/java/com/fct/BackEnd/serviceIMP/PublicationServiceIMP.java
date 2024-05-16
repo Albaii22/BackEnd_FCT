@@ -51,7 +51,7 @@ public class PublicationServiceIMP implements PublicationsService {
     @Override
     public Publications updatePublicacion(Long id, Publications publication) {
         logger.info("Updating publication with id {}", id);
-        publication.set_id(id);
+        publication.setId(id);
         Publications updatedPublication = publicationRepository.save(publication);
         logger.debug("Updated publication: {}", updatedPublication);
         return updatedPublication;

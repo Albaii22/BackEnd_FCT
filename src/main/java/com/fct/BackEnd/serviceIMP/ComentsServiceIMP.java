@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.fct.BackEnd.entities.Coments;
+import com.fct.BackEnd.entities.Comments;
 import com.fct.BackEnd.repository.ComentsRepository;
 import com.fct.BackEnd.services.ComentsService;
 
@@ -21,17 +21,17 @@ public class ComentsServiceIMP implements ComentsService {
     private ComentsRepository comentsRepository;
 
     @Override
-    public List<Coments> getAllComentarios() {
+    public List<Comments> getAllComentarios() {
         logger.info("Fetching all comments");
-        List<Coments> comments = comentsRepository.findAll();
+        List<Comments> comments = comentsRepository.findAll();
         logger.debug("Found {} comments", comments.size());
         return comments;
     }
 
     @Override
-    public Optional<Coments> getComentarioById(Long id) {
+    public Optional<Comments> getComentarioById(Long id) {
         logger.info("Fetching comment with id {}", id);
-        Optional<Coments> comment = comentsRepository.findById(id);
+        Optional<Comments> comment = comentsRepository.findById(id);
         if (comment.isPresent()) {
             logger.debug("Found comment: {}", comment.get());
         } else {
@@ -41,18 +41,18 @@ public class ComentsServiceIMP implements ComentsService {
     }
 
     @Override
-    public Coments createComentario(Coments coments) {
+    public Comments createComentario(Comments coments) {
         logger.info("Creating new comment");
-        Coments savedComment = comentsRepository.save(coments);
+        Comments savedComment = comentsRepository.save(coments);
         logger.debug("Created comment: {}", savedComment);
         return savedComment;
     }
 
     @Override
-    public Coments updateComentario(Long id, Coments coments) {
+    public Comments updateComentario(Long id, Comments coments) {
         logger.info("Updating comment with id {}", id);
-        coments.set_id(id);
-        Coments updatedComment = comentsRepository.save(coments);
+        coments.setId(id);
+        Comments updatedComment = comentsRepository.save(coments);
         logger.debug("Updated comment: {}", updatedComment);
         return updatedComment;
     }

@@ -1,8 +1,6 @@
 package com.fct.BackEnd.entities;
 
-import org.springframework.data.mongodb.core.mapping.Document;
-
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -12,12 +10,13 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-@Document(collection = "admin")
+@Entity
+@Table(name = "admin")
 public class Admin {
     @Id
-    private Long _id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
     private String username;
-    private int privilege_level;
+    private int privilegeLevel;
 }
-
