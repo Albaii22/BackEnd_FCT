@@ -1,4 +1,4 @@
-package com.fct.BackEnd.controller;
+package com.fct.BackEnd.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
